@@ -56,14 +56,21 @@ function Home() {
     getComments(postId);
   };
 
-  const deletePost = async (id) => {
+const deletePost = async (id) => {
+    // Primero eliminar los comentarios del post
     await supabase
-      .from("posts")
-      .delete()
-      .eq("id", id);
+        .from("comments")
+        .delete()
+        .eq("post_id", id);
+
+    // Luego eliminar el post
+    await supabase
+        .from("posts")
+        .delete()
+        .eq("id", id);
 
     getPosts();
-  };
+};
 
   return (
 
