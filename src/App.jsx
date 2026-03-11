@@ -103,7 +103,7 @@ function App() {
                     />
 
                     <Route
-                        path="./Login"
+                        path="./login"
                         element={
                             <Login setCurrentUser={setCurrentUser} />
                         }
