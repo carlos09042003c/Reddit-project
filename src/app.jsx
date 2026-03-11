@@ -5,7 +5,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import CreatePost from "./pages/CreatePost";
 
-import Sidebar from "./components/sidebar";
+import Sidebar from "./components/Sidebar"
 import Navbar from "./components/Navbar";
 
 import { supabase } from "./supabaseClient";
@@ -34,7 +34,7 @@ function App() {
         localStorage.setItem("currentUser", JSON.stringify(currentUser));
     }, [currentUser]);
 
-    // 🔵 Detectar login con Google
+    // detectar login con Google
     useEffect(() => {
 
         const getUser = async () => {
