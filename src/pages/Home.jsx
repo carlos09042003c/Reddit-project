@@ -186,7 +186,7 @@ function Home({ currentUser }) {
             <div>
               {posts.map((item) => (
                 <div key={item.created_at}>
-                  {item.title}
+                  {item.created_at}
                 </div>
               ))}
             </div>
