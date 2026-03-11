@@ -183,6 +183,10 @@ function Home({ currentUser }) {
               Comentario
             </button>
 
+            <div>
+              {posts.created_at}
+            </div>
+
           </div>
 
         </div>
