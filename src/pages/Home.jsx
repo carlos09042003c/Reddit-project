@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { supabase } from "../supabaseclient";
+import { supabase } from "../supabaseClient";
 
 function Home() {
 

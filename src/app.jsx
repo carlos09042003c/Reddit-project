@@ -8,7 +8,7 @@ import CreatePost from "./pages/CreatePost";
 import Sidebar from "./components/sidebar";
 import Navbar from "./components/Navbar";
 
-import { supabase } from "./supabaseclient";
+import { supabase } from "./supabaseClient";
 
 import "./index.css";
 

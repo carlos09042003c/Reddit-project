@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { supabase } from "../supabaseclient";
+import { supabase } from "../supabaseClient";
 
 export default function Login({ setCurrentUser }) {
 
