@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../supabaseClient";
 
-function Home() {
+function Home({ currentUser }) {
 
   const [posts, setPosts] = useState([]);
   const [comments, setComments] = useState({});
@@ -48,7 +48,7 @@ function Home() {
         {
           post_id: postId,
           content: newComment,
-          author: "Carlos"
+          author: currentUser?.username || "Anónimo"
         }
       ]);
 
@@ -56,21 +56,19 @@ function Home() {
     getComments(postId);
   };
 
-const deletePost = async (id) => {
-    // Primero eliminar los comentarios del post
+  const deletePost = async (id) => {
     await supabase
-        .from("comments")
-        .delete()
-        .eq("post_id", id);
+      .from("comments")
+      .delete()
+      .eq("post_id", id);
 
-    // Luego eliminar el post
     await supabase
-        .from("posts")
-        .delete()
-        .eq("id", id);
+      .from("posts")
+      .delete()
+      .eq("id", id);
 
     getPosts();
-};
+  };
 
   return (
 
@@ -87,7 +85,7 @@ const deletePost = async (id) => {
         textAlign: "center",
         marginBottom: "40px"
       }}>
-        Reddit 
+        Reddit
       </h1>
 
       {posts.map((post) => (
@@ -124,20 +122,22 @@ const deletePost = async (id) => {
             Author: {post.author}
           </p>
 
-          <button
-            onClick={() => deletePost(post.id)}
-            style={{
-              background:"#ff4d4f",
-              border:"none",
-              color:"white",
-              padding:"15px 30px",
-              borderRadius:"6px",
-              cursor:"pointer",
-              marginTop:"10px"
-            }}
-          >
-            Eliminar Post
-          </button>
+          {currentUser && currentUser.username === post.author && (
+            <button
+              onClick={() => deletePost(post.id)}
+              style={{
+                background:"#ff4d4f",
+                border:"none",
+                color:"white",
+                padding:"15px 30px",
+                borderRadius:"6px",
+                cursor:"pointer",
+                marginTop:"10px"
+              }}
+            >
+              Eliminar Post
+            </button>
+          )}
 
           <hr style={{margin:"20px 0"}} />
 

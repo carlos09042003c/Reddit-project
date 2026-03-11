@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { supabase } from "../supabaseClient";
 
-function CreatePost() {
+function CreatePost({ currentUser }) {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [image, setImage] = useState(null);
@@ -30,15 +30,18 @@ function CreatePost() {
       imageUrl = data.publicUrl;
     }
 
+    const { data: { user } } = await supabase.auth.getUser();
+
     const { error } = await supabase
       .from("posts")
       .insert([
         {
           title,
           content,
-          author: "Carlos",
+          author: currentUser?.username || user?.email || "Anónimo",
           image: imageUrl,
-          votes: 0
+          votes: 0,
+          user_id: user?.id
         }
       ]);
 
