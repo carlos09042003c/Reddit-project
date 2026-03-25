@@ -183,7 +183,11 @@ function Home({ currentUser }) {
               Comentario
             </button>
 
-            
+            {comments.map((f)=>(
+              <p key={f.id}>
+                {f.created_at}
+              </p>
+            ))}
 
           </div>
 
