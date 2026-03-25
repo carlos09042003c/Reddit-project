@@ -78,6 +78,7 @@ export default function Comments({ postId, currentUser }) {
           <b>{c.author}</b>
 
           <p>{c.content}</p>
+          <p>{c.created_at}</p>
 
         </div>
 
