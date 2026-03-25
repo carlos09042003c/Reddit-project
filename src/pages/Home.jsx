@@ -183,13 +183,7 @@ function Home({ currentUser }) {
               Comentario
             </button>
 
-            <div>
-              {posts.map((item) => (
-                <div key={item.created_at}>
-                  {item.created_at}
-                </div>
-              ))}
-            </div>
+            
 
           </div>
 

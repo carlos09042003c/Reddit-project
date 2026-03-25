@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { supabase } from "../supabaseclient";
+import { supabase } from "../supabaseClient";
 
 export default function Comments({ postId, currentUser }) {
 
